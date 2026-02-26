@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hanifan Mu'tashim | Physics & Designer</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/contentful@latest/dist/contentful.browser.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+<body>
+  <canvas id="physics-canvas"></canvas>
+  
+  <nav>
+    <div class="container">
+      <div class="logo"><a href="#" onclick="slideTo(0)">Hanifan Mutashim Billah</a></div>
+      <ul>
+        <li><a href="#" onclick="slideTo(0)" class="nav-link active">Home</a></li>
+        <li><a href="#" onclick="slideTo(1)" class="nav-link">Experience</a></li>
+        <li><a href="#" onclick="slideTo(2)" class="nav-link">Education</a></li>
+        <li><a href="#" onclick="slideTo(3)" class="nav-link">Portfolio</a></li>
+        <li><a href="#" onclick="slideTo(4)" class="nav-link">Publications</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="main-wrapper" id="slider">
+    <section id="hero" class="section">
+        <div class="hero-content container">
+            <h1 class="fade-in">Bridging Physics Rigor & Digital Innovation</h1>
+            <p class="fade-in" style="text-align: center;">
+                Physics Graduate specializing in <strong>material science</strong>. 
+                Bringing scientific rigor to the forefront of <strong>captivating digital innovation</strong>.
+            </p>
+            
+
+            <div class="social-contacts fade-in">
+                <a href="https://linkedin.com/in/hanifan-mutashim-billah-85b5b1319/" target="_blank" class="social-icon" title="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://wa.me/6289630057185" target="_blank" class="social-icon" title="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://instagram.com/mutashimb" target="_blank" class="social-icon" title="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://medium.com/@hanifanmutasim_94203" target="_blank" class="social-icon" title="Medium">
+                    <i class="fab fa-medium-m"></i>
+                </a>
+                <a href="https://github.com/Mutashimb" target="_blank" class="social-icon" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="cv" class="section">
+      <div class="container">
+        <h2 class="text-center">Work & Research Experience</h2>
+        <div id="experience-list" class="timeline">
+          <p class="loading-msg">Retrieving scientific data from orbit...</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="educations" class="section">
+        <div class="container">
+            <h2 class="text-center">Academic Background</h2>
+            <div id="educations-list" class="timeline"></div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="section">
+      <div class="container">
+        <h2 class="text-center">Projects I've Done</h2>
+        <div id="portfolio-grid" class="portfolio-grid">
+          <p class="loading-msg">Fetching creative assets...</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="publications" class="section">
+      <div class="container publications">
+        <h2 class="text-center">Scientific Research</h2>
+        <ul id="publications-list">
+          <p class="loading-msg">Analyzing research papers...</p>
+        </ul>
+      </div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    window.MathJax = {
+        tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        }
+    };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+</html>

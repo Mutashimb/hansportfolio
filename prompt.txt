@@ -1,0 +1,60 @@
+Create a modern, bright, and energetic personal portfolio website with a strong geometric theme.
+
+Main design specifications:
+- Primary background color: pure white (#FFFFFF) or very light off-white (#FAFAFA) for the entire site
+- Vibrant accent colors: bright red (#FF3B30 or #E63946), bright yellow (#FFCA3A or #FFD60A), bright green (#00FF9F or #06D6A0), bright blue (#3A86FF or #4361EE). Use all four colors balanced across the design — do not let one color dominate.
+- Core design elements: geometric shapes (circles, triangles, rounded rectangles, diagonal lines, overlapping abstract forms, geometric patterns). Use them for:
+  - Hero section decoration
+  - Section dividers
+  - Very subtle background pattern (5–10% opacity)
+  - Hover effects on cards/projects
+  - Icons, bullet points, decorative elements
+- Overall feeling: playful yet professional, clean & minimal but not boring, very modern 2025–2026 aesthetic, fully mobile-responsive, smooth micro-interactions (on scroll & hover)
+
+Navigation (sticky/fixed navbar at the top) with these exact menu items:
+1. CV
+2. Education
+3. Portfolio
+4. Publications
+5. Skills
+
+Desired page structure & section order (single-page scroll or multi-page with smooth navigation):
+
+1. Hero Section (topmost)
+   - Large full name + professional tagline (e.g. "Hanifan Mu'tashim | [Your Profession]")
+   - Circular or geometric-framed profile photo
+   - Colorful CTA buttons (e.g. "View Portfolio" or "Contact Me") using rotating accent colors
+   - Background: white + subtle floating geometric shapes or light overlay
+
+2. CV Section
+   - Concise work experience summary in vertical timeline or geometric cards
+   - Use geometric icons + different accent colors per entry
+
+3. Education Section
+   - List of degrees, institutions, years, GPA (if relevant)
+   - Display as cards or timeline with colored accent blocks on the side
+
+4. Portfolio Section (most important section)
+   - Grid or masonry layout for projects (3–4 columns on desktop, 1–2 on mobile)
+   - Each project: large thumbnail + geometric shape overlay on hover
+   - Project title, short description, tech stack (pill-shaped tags with varied accent colors)
+   - Optional category filters (e.g. UI/UX, Web Development, Graphic Design, etc.)
+
+5. Publications Section
+   - List of papers, journals, conferences, articles
+   - Include title, year, link (if available), venue/publisher
+   - Use accent colors for numbering, icons, or highlight bars
+
+6. Skills Section
+   - Display skills using geometric progress bars, circular charts, or sized tag cloud (size = proficiency level)
+   - Group into categories: Programming, Design Tools, Soft Skills, etc.
+   - Different accent colors per category
+
+Additional desired features:
+- Simple footer: copyright, social media icons (geometric style), email, LinkedIn/WhatsApp links
+- Smooth animations: fade-in on scroll, slight scale on card hover, subtle moving geometric shapes in hero background
+- Typography: modern sans-serif fonts (e.g. Inter, Poppins, Manrope, or Geist); bold playful headings + clean body text
+- Perfectly responsive on mobile & tablet
+- Keep it clean — avoid clutter; focus remains on content
+
+Overall inspiration: create a portfolio style commonly seen on Dribbble / Awwwards — geometric colorful accents on white background, very bright and energetic yet still professional.
