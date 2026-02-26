@@ -1,0 +1,18 @@
+{
+  "routes": [
+    {
+      "match": "/api/(.*)",
+      "type": "function",
+      "action": {
+        "function_name": "content"
+      }
+    },
+    {
+      "match": "(.*)",
+      "type": "static",
+      "action": {
+        "fallback": "index.html"
+      }
+    }
+  ]
+}
