@@ -207,9 +207,12 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
 
 // --- KONFIGURASI CONTENTFUL ---
+// values will be injected from EdgeOne environment variables
+// NOTE: this file still runs in the browser, so the token will end up visible
+// unless you proxy the requests via a server/edge function as described earlier.
 const client = contentful.createClient({
-  space: 'space', // Ganti dengan Space ID kamu
-  accessToken: 'accessToken' // Ganti dengan Access Token kamu
+  space: process.env.space,
+  accessToken: process.env.accessToken
 });
 
 // --- FETCH DATA DARI CONTENTFUL ---
