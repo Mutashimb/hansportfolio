@@ -216,12 +216,30 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 async function fetchContent() {
   try {
     // hit our serverless proxy endpoint instead of calling Contentful directly
-    const [expData, portData, pubData, eduData] = await Promise.all([
-      fetch('/api/content?type=experience&order=-fields.period').then(r => r.json()),
-      fetch('/api/content?type=portfolio').then(r => r.json()),
-      fetch('/api/content?type=publication').then(r => r.json()),
-      fetch('/api/content?type=education&order=-fields.period').then(r => r.json())
-    ]);
+    const endpoints = [
+      '/api/content?type=experience&order=-fields.period',
+      '/api/content?type=portfolio',
+      '/api/content?type=publication',
+      '/api/content?type=education&order=-fields.period'
+    ];
+
+    const results = await Promise.all(endpoints.map(async (url) => {
+      const res = await fetch(url);
+      if (!res.ok) {
+        const text = await res.text();
+        console.error(`fetch failed ${url}:`, res.status, res.statusText, text);
+        throw new Error(`HTTP ${res.status}`);
+      }
+      try {
+        return res.json();
+      } catch (e) {
+        const text = await res.text();
+        console.error(`Invalid JSON from ${url}:`, text);
+        throw e;
+      }
+    }));
+
+    const [expData, portData, pubData, eduData] = results;
 
     renderExperience(expData.items);
     renderPortfolio(portData.items);
