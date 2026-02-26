@@ -206,14 +206,36 @@ const observer = new IntersectionObserver(entries => {
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
 
-// --- KONFIGURASI CONTENTFUL ---
-// values will be injected from EdgeOne environment variables
-// NOTE: this file still runs in the browser, so the token will end up visible
-// unless you proxy the requests via a server/edge function as described earlier.
-const client = contentful.createClient({
-  space: process.env.space,
-  accessToken: process.env.accessToken
-});
+// --- CONFIGURATION NOTE ---
+// the Contentful client is no longer created in browser code; requests
+// are proxied through an Edge function so the API token stays secret.
+// (the CDN import tag can be removed if you no longer use contentful
+// on the client side.)
+
+// --- FETCH DATA DARI CONTENTFUL ---
+async function fetchContent() {
+  try {
+    // hit our serverless proxy endpoint instead of calling Contentful directly
+    const [expData, portData, pubData, eduData] = await Promise.all([
+      fetch('/api/content?type=experience&order=-fields.period').then(r => r.json()),
+      fetch('/api/content?type=portfolio').then(r => r.json()),
+      fetch('/api/content?type=publication').then(r => r.json()),
+      fetch('/api/content?type=education&order=-fields.period').then(r => r.json())
+    ]);
+
+    renderExperience(expData.items);
+    renderPortfolio(portData.items);
+    renderPublications(pubData.items);
+    renderEducations(eduData.items);
+
+    if (window.MathJax && window.MathJax.typesetPromise) {
+      window.MathJax.typesetPromise();
+    }
+
+  } catch (error) {
+    console.error("Gagal koneksi ke Contentful:", error);
+  }
+}
 
 // --- FETCH DATA DARI CONTENTFUL ---
 async function fetchContent() {
