@@ -237,33 +237,6 @@ async function fetchContent() {
   }
 }
 
-// --- FETCH DATA DARI CONTENTFUL ---
-async function fetchContent() {
-  try {
-    // Ambil semua data sekaligus
-    const [expData, portData, pubData, eduData] = await Promise.all([
-      client.getEntries({ content_type: 'experience', order: '-fields.period' }),
-      client.getEntries({ content_type: 'portfolio' }),
-      client.getEntries({ content_type: 'publication' }),
-      // request education entries sorted by period (descending)
-      client.getEntries({ content_type: 'education', order: '-fields.period' })
-    ]);
-
-    renderExperience(expData.items);
-    renderPortfolio(portData.items);
-    renderPublications(pubData.items);
-    // pass raw array; we'll also ensure correct ordering inside renderer
-    renderEducations(eduData.items);
-
-    // Perintahkan MathJax untuk memproses rumus yang baru masuk
-    if (window.MathJax && window.MathJax.typesetPromise) {
-      window.MathJax.typesetPromise();
-    }
-
-  } catch (error) {
-    console.error("Gagal koneksi ke Contentful:", error);
-  }
-}
 
 // --- RENDER FUNCTIONS ---
 function renderExperience(items) {
