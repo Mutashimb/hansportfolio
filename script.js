@@ -208,8 +208,8 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
 // --- KONFIGURASI CONTENTFUL ---
 const client = contentful.createClient({
-  space: 'n3thhny1au58', // Ganti dengan Space ID kamu
-  accessToken: 'BAkptkvOh0-WSdVr8bb6RidKN8HRk6zXb96UVOm8j_0' // Ganti dengan Access Token kamu
+  space: 'space', // Ganti dengan Space ID kamu
+  accessToken: 'accessToken' // Ganti dengan Access Token kamu
 });
 
 // --- FETCH DATA DARI CONTENTFUL ---
