@@ -213,34 +213,82 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 // on the client side.)
 
 // --- FETCH DATA DARI CONTENTFUL ---
+// async function fetchContent() {
+//   try {
+//     // hit our serverless proxy endpoint instead of calling Contentful directly
+//     const endpoints = [
+//       '/api/content?type=experience&order=-fields.period',
+//       '/api/content?type=portfolio',
+//       '/api/content?type=publication',
+//       '/api/content?type=education&order=-fields.period'
+//     ];
+
+//     const results = await Promise.all(endpoints.map(async (url) => {
+//       const res = await fetch(url);
+//       if (!res.ok) {
+//         const text = await res.text();
+//         console.error(`fetch failed ${url}:`, res.status, res.statusText, text);
+//         throw new Error(`HTTP ${res.status}`);
+//       }
+//       try {
+//         return res.json();
+//       } catch (e) {
+//         const text = await res.text();
+//         console.error(`Invalid JSON from ${url}:`, text);
+//         throw e;
+//       }
+//     }));
+
+//     const [expData, portData, pubData, eduData] = results;
+
+//     renderExperience(expData.items);
+//     renderPortfolio(portData.items);
+//     renderPublications(pubData.items);
+//     renderEducations(eduData.items);
+
+//     if (window.MathJax && window.MathJax.typesetPromise) {
+//       window.MathJax.typesetPromise();
+//     }
+
+//   } catch (error) {
+//     console.error("Gagal koneksi ke Contentful:", error);
+//   }
+// }
+
+// --- FETCH DATA LANGSUNG DARI CONTENTFUL ---
 async function fetchContent() {
   try {
-    // hit our serverless proxy endpoint instead of calling Contentful directly
+    // 2. Kita buat URL dasar (Base URL) resmi dari Contentful
+    const baseUrl = `https://cdn.contentful.com/spaces/${SPACE_ID}/environments/${ENVIRONMENT}/entries`;
+
+    // 3. Kita ganti endpoint lama dengan endpoint asli dari Contentful
+    // Perhatikan: di Contentful, parameternya bernama 'content_type', bukan 'type'
     const endpoints = [
-      '/api/content?type=experience&order=-fields.period',
-      '/api/content?type=portfolio',
-      '/api/content?type=publication',
-      '/api/content?type=education&order=-fields.period'
+      `${baseUrl}?access_token=${ACCESS_TOKEN}&content_type=experience&order=-fields.period`,
+      `${baseUrl}?access_token=${ACCESS_TOKEN}&content_type=portfolio`,
+      `${baseUrl}?access_token=${ACCESS_TOKEN}&content_type=publication`,
+      `${baseUrl}?access_token=${ACCESS_TOKEN}&content_type=education&order=-fields.period`
     ];
 
     const results = await Promise.all(endpoints.map(async (url) => {
       const res = await fetch(url);
       if (!res.ok) {
         const text = await res.text();
-        console.error(`fetch failed ${url}:`, res.status, res.statusText, text);
+        console.error(`Fetch gagal untuk ${url}:`, res.status, res.statusText, text);
         throw new Error(`HTTP ${res.status}`);
       }
       try {
         return res.json();
       } catch (e) {
         const text = await res.text();
-        console.error(`Invalid JSON from ${url}:`, text);
+        console.error(`Bukan JSON yang valid dari ${url}:`, text);
         throw e;
       }
     }));
 
     const [expData, portData, pubData, eduData] = results;
 
+    // Contentful mengembalikan data dalam format { items: [...] }
     renderExperience(expData.items);
     renderPortfolio(portData.items);
     renderPublications(pubData.items);
