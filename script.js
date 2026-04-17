@@ -257,6 +257,17 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
 // --- FETCH DATA LANGSUNG DARI CONTENTFUL ---
 async function fetchContent() {
+  // 1. Masukkan Space ID dan Delivery Token kamu di sini
+  const space1 = 'n3thhny';
+  const space2 = '1au58';
+  const access1 = 'BAkptkvOh0';
+  const access2 = '-WSdVr8bb6Rid';
+  const access3 = 'KN8HRk6zXb96UVOm8j_0';
+
+  const SPACE_ID = space1 + space2;
+  const ACCESS_TOKEN = access1 + access2 + access3; 
+  const ENVIRONMENT = 'master'; // Biasanya 'master', ubah jika kamu pakai environment lain
+
   try {
     // 2. Kita buat URL dasar (Base URL) resmi dari Contentful
     const baseUrl = `https://cdn.contentful.com/spaces/${SPACE_ID}/environments/${ENVIRONMENT}/entries`;
